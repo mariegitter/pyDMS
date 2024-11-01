@@ -48,11 +48,11 @@ SHORT_DESCRIPTION = (
 )
 REQS = [
     "numpy>=1.24.4",
-    "gdal==3.8.4",
-    "scikit-learn>=3.7.0",
+    "scikit-learn>=1.5.2",
     "scipy>=1.14.1",
     "numba==0.57.1",
     "pyproj>=3.7.0",
+    "gdal",
 ]
 
 setup(
