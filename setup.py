@@ -21,6 +21,7 @@ from setuptools import setup
 
 PROJECT_ROOT = os.path.dirname(__file__)
 
+
 def read_file(filepath, root=PROJECT_ROOT):
     """
     Return the contents of the specified `filepath`.
@@ -40,26 +41,35 @@ def read_file(filepath, root=PROJECT_ROOT):
 
 
 LONG_DESCRIPTION = read_file("README.md")
-SHORT_DESCRIPTION = "Python implementation of Data Mining Sharpener (DMS): a decision tree based"+\
-                    " algorithm for sharpening (disaggregation) of low-resolution images using"+\
-                    " high-resolution images."
-REQS = ['numpy>=1.10', 'gdal>=3.0', 'scikit-learn', 'scipy', 'numba', 'pyproj>2.2.0']
+SHORT_DESCRIPTION = (
+    "Python implementation of Data Mining Sharpener (DMS): a decision tree based"
+    + " algorithm for sharpening (disaggregation) of low-resolution images using"
+    + " high-resolution images."
+)
+REQS = [
+    "numpy>=1.24.4",
+    "gdal==3.8.4",
+    "scikit-learn>=3.7.0",
+    "scipy>=1.14.1",
+    "numba==0.57.1",
+    "pyproj>=3.7.0",
+]
 
 setup(
-    name                  = "pyDMS",
-    packages              = ['pyDMS'],
-    dependency_links      = [],
-    install_requires      = REQS,
-    version               = "1.0",
-    author                = "Radoslaw Guzinski",
-    author_email          = "rmgu@dhigroup.com",
-    maintainer            = "Radoslaw Guzinski",
-    maintainer_email      = "rmgu@dhigroup.com",
-    description           = SHORT_DESCRIPTION,
-    license               = "GPL",
-    url                   = "https://github.com/radosuav/pyDMS/",
-    long_description      = LONG_DESCRIPTION,
-    classifiers           = [
+    name="pyDMS",
+    packages=["pyDMS"],
+    dependency_links=[],
+    install_requires=REQS,
+    version="1.0",
+    author="Radoslaw Guzinski",
+    author_email="rmgu@dhigroup.com",
+    maintainer="Radoslaw Guzinski",
+    maintainer_email="rmgu@dhigroup.com",
+    description=SHORT_DESCRIPTION,
+    license="GPL",
+    url="https://github.com/radosuav/pyDMS/",
+    long_description=LONG_DESCRIPTION,
+    classifiers=[
         "Development Status :: Beta",
         "Intended Audience :: Science/Research",
         "Topic :: Scientific/Engineering :: Agricultural Science",
@@ -68,7 +78,14 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3"],
-    keywords             = ['DMS', 'sata mining sharpener', 'image sharpening', 'disaggregation',
-                            'Remote Sensing'],
-    zip_safe             = False)
+        "Programming Language :: Python :: 3",
+    ],
+    keywords=[
+        "DMS",
+        "sata mining sharpener",
+        "image sharpening",
+        "disaggregation",
+        "Remote Sensing",
+    ],
+    zip_safe=False,
+)
