@@ -46,14 +46,7 @@ SHORT_DESCRIPTION = (
     + " algorithm for sharpening (disaggregation) of low-resolution images using"
     + " high-resolution images."
 )
-REQS = [
-    "numpy>=1.24.4",
-    "scikit-learn>=1.5.2",
-    "scipy>=1.14.1",
-    "numba==0.57.1",
-    "pyproj>=3.7.0",
-    "gdal",
-]
+REQS = []
 
 setup(
     name="pyDMS",
