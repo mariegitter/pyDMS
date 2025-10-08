@@ -2,7 +2,11 @@ name: Build and publish wheels
 
 
 on:
-  push
+  push:
+    branches:
+      - main
+      - pypi-package
+      
 jobs:
   build_wheels:
     strategy:
