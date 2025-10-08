@@ -10,7 +10,7 @@ include = ["pyDMS/**", "README.md", "pyDMS/gdal_data/**"]
 exclude = ["tests"]
 
 [project]
-name = "pydms"
+name = "py-dms"
 version = "1.2.0"
 license = {file = "LICENSE"}
 description = "Python implementation of Data Mining Sharpener (DMS)"
