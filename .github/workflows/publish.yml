@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.11]
+        python-version: [3.9, 3.10, 3.11, 3.12]
 
     steps:
       - name: Checkout source
@@ -28,21 +28,15 @@ jobs:
           pip install --upgrade pip
           pip install cibuildwheel==2.* hatch twine
 
-      # --- Install GDAL Python wheel inside cibuildwheel build env ---
       - name: Build wheels
         env:
-          # Install GDAL in the isolated Linux build environment
           CIBW_BEFORE_ALL_LINUX: |
-            pip install "gdal==3.6.*"
-          # Optional: tell compiler where to find GDAL headers (pip wheel puts them inside env)
-          CIBW_ENVIRONMENT: |
-            CPLUS_INCLUDE_PATH=${PWD}/.venv/include
-            C_INCLUDE_PATH=${PWD}/.venv/include
+            pip install --upgrade pip
+            pip install --only-binary=:all: "gdal==3.6.4"
         run: |
           python -m cibuildwheel --output-dir wheelhouse
 
       - name: Publish to PyPI
-        if: startsWith(github.ref, 'refs/tags/')
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
