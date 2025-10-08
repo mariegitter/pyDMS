@@ -14,29 +14,43 @@ jobs:
       matrix:
         python-version: [3.11]
 
+
     steps:
-      - name: Checkout source
+      - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gdal-bin libgdal-dev python3-dev build-essential
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install build tools
+      - name: Upgrade pip and install build tools
         run: |
-          pip install --upgrade pip
-          pip install cibuildwheel==2.* hatch twine
+          python -m pip install --upgrade pip
+          pip install cibuildwheel==2.* hatch auditwheel twine
 
-      - name: Build wheels
+      - name: Build Linux wheels and bundle GDAL
         env:
-          CIBW_BEFORE_ALL_LINUX: |
-            pip install --upgrade pip
-            pip install --only-binary=:all: "gdal==3.6.4"
+          CIBW_SKIP: "pp* macos* win*"
+          CIBW_ENVIRONMENT_LINUX: |
+            C_INCLUDE_PATH=/usr/include/gdal
+            CPLUS_INCLUDE_PATH=/usr/include/gdal
         run: |
           python -m cibuildwheel --output-dir wheelhouse
 
+      - name: Repair wheels (bundle shared libraries)
+        run: |
+          for whl in wheelhouse/*.whl; do
+            auditwheel repair "$whl" --wheel-dir wheelhouse
+          done
+
       - name: Publish to PyPI
+        if: startsWith(github.ref, 'refs/tags/')
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
