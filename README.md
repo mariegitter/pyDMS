@@ -1,5 +1,8 @@
-[![docs](https://img.shields.io/badge/Docs-Github%20Pages-blue)](https://radosuav.github.io/pyDMS/)
 # pyDMS
+[![PyPI version](https://img.shields.io/pypi/v/python_dms.svg?color=blue)](https://pypi.org/project/python_dms/)
+[![Tests](https://github.com/radosuav/pyDMS/actions/workflows/tests.yml/badge.svg)](https://github.com/radosuav/pyDMS/actions/workflows/tests.yml)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-green)](https://radosuav.github.io/pyDMS/)
+
 
 Python implementation of Data Mining Sharpener (DMS): a decision tree based algorithm for
 sharpening (disaggregation) of low-resolution images using high-resolution images.
