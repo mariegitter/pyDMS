@@ -319,8 +319,29 @@
 
 <h1 id="getting-started">Getting started</h1>
 <h2 id="installation">Installation</h2>
-<pre><code>pip install python_dms
-</code></pre>
+<p><code>python_dms</code> requires GDAL to be installed on your system.
+Since GDAL provides compiled binaries that vary by platform, this package does not bundle them. You will need to install GDAL yourself before installing <code>python_dms</code>.</p>
+<ol>
+<li>
+<p><strong>Install GDAL</strong>
+    #### macOS (Homebrew)
+    <code>brew install gdal</code>
+    #### Ubuntu / Debian
+    <code>sudo apt-get update
+    sudo apt-get install -y gdal-bin libgdal-dev</code>
+    #### Windows
+    Download and install GDAL from GIS Internals or install via conda:
+    <code>conda install -c conda-forge gdal</code> </p>
+<p>You can verify your installation by running:
+<code>gdalinfo --version</code> </p>
+</li>
+<li>
+<p><strong>Install <code>python_dms</code></strong></p>
+<p>Once GDAL is installed and available in your environment, install python_dms with pip:
+<code>pip install python_dms</code></p>
+<p>If GDAL is installed in a non-standard location, you may need to set the <code>GDAL_LIBRARY_PATH</code> environment variable before installing.</p>
+</li>
+</ol>
 
 
 
