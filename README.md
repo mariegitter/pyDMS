@@ -54,7 +54,7 @@ Since GDAL provides compiled binaries that vary by platform, this package does n
 
     or download the project to your local system, enter the download directory and then type
 
-    `python setup.py install`
+    `pip install .`
 
 ## Usage
 For usage template see [run_pyDMS.py](/run_pyDMS.py).
