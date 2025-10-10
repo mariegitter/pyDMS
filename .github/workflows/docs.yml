@@ -4,7 +4,6 @@ on:
   push:
     branches:    
       - main
-      - pypi-package
 
 jobs:
   build:
