@@ -25,12 +25,10 @@ jobs:
           use-mamba: true  # faster dependency resolution
 
       - name: Install GDAL via Conda
-        run: |
-          conda install -y -c conda-forge gdal
+        run: conda run -n test-env conda install -y -c conda-forge gdal
 
       - name: Install package dependencies
-        run: |
-          pip install -e .[test]
+        run: conda run -n test-env pip install -e .[test]
 
       - name: Run tests
-        run: pytest -v
+        run: conda run -n test-env pytest -v
