@@ -1,0 +1,51 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, pypi-package]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ['3.11', '3.12']
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install GDAL system dependencies
+        run: |
+          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+            sudo apt-get update
+            sudo apt-get install -y gdal-bin libgdal-dev
+          elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+            brew update
+            brew install gdal
+          elif [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            choco install gdal --version=3.7.1 -y
+          fi
+
+      - name: Install GDAL Python binding
+        run: |
+          # Get the system GDAL version
+          GDAL_VERSION=$(gdal-config --version)
+          echo "System GDAL version: $GDAL_VERSION"
+          
+          # Install the matching Python binding
+          pip install "gdal==$GDAL_VERSION"
+
+      - name: Install package dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[test]
+
+      - name: Run tests
+        run: pytest -v
