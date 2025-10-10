@@ -19,10 +19,11 @@ jobs:
       - name: Set up Conda
         uses: conda-incubator/setup-miniconda@v2
         with:
+          miniforge-version: latest 
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
           activate-environment: test-env
-          use-mamba: true  # faster dependency resolution
+          use-mamba: true 
 
       - name: Install GDAL via Conda
         run: conda run -n test-env conda install -y -c conda-forge gdal
