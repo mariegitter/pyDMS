@@ -5,6 +5,7 @@
 Since GDAL provides compiled binaries that vary by platform, this package does not bundle them. You will need to install GDAL yourself before installing ```python_dms```.
 
 1. **Install GDAL**
+
     #### macOS (Homebrew)
     ```
     brew install gdal
