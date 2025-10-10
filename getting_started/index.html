@@ -234,6 +234,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos-homebrew" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS (Homebrew)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-debian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ubuntu / Debian
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -299,6 +332,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos-homebrew" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS (Homebrew)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-debian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ubuntu / Debian
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -323,15 +389,15 @@
 Since GDAL provides compiled binaries that vary by platform, this package does not bundle them. You will need to install GDAL yourself before installing <code>python_dms</code>.</p>
 <ol>
 <li>
-<p><strong>Install GDAL</strong>
-    #### macOS (Homebrew)
-    <code>brew install gdal</code>
-    #### Ubuntu / Debian
-    <code>sudo apt-get update
-    sudo apt-get install -y gdal-bin libgdal-dev</code>
-    #### Windows
-    Download and install GDAL from GIS Internals or install via conda:
-    <code>conda install -c conda-forge gdal</code> </p>
+<p><strong>Install GDAL</strong></p>
+<h4 id="macos-homebrew">macOS (Homebrew)</h4>
+<p><code>brew install gdal</code></p>
+<h4 id="ubuntu-debian">Ubuntu / Debian</h4>
+<p><code>sudo apt-get update
+sudo apt-get install -y gdal-bin libgdal-dev</code></p>
+<h4 id="windows">Windows</h4>
+<p>Download and install GDAL from GIS Internals or install via conda:
+<code>conda install -c conda-forge gdal</code> </p>
 <p>You can verify your installation by running:
 <code>gdalinfo --version</code> </p>
 </li>
